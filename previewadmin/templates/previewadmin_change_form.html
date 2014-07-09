@@ -1,0 +1,54 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+    <style type="text/css">
+        label{
+            font-weight: bold !important;
+        }
+    </style>
+{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+
+{% block content_title %}{% if title %}<h1>{{ original }}</h1>{% endif %}{% endblock %}
+{% block content %}<div id="content-main">
+{% block object-tools %}
+  <ul class="object-tools">
+    <li>
+        <a href="" class="close-preview">{% trans "Close" %}</a>
+    </li>
+  </ul>
+{% endblock %}
+<div>
+
+{% block field_sets %}
+{% for fieldset in adminform %}
+  {% include "previewadmin_fieldset.html" %}
+{% endfor %}
+{% endblock %}
+
+{% block after_field_sets %}{% endblock %}
+
+{% block inline_field_sets %}
+{% for inline_admin_formset in inline_admin_formsets %}
+    {% include "preview_tabular_inline.html" %}
+{% endfor %}
+{% endblock %}
+
+{% block after_related_objects %}{% endblock %}
+
+</div>
+
+</div>
+{% endblock %}
