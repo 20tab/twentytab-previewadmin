@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import previewadmin
 
-setup(name='twentytab-inspectmodel',
+setup(name='twentytab-previewadmin',
       version=previewadmin.__version__,
       description='A django app that initializes admin changelist view with a useful tool to have a preview of instances',
       author='20tab S.r.l.',
