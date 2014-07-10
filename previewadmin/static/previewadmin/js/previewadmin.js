@@ -17,6 +17,7 @@ django.jQuery(function($){
                 url: url,
                 success: function(data){
                     content.html(data);
+                    $('.preview-content').fadeOut();
                     $('.close-preview').bind('click', close_preview);
                     content.fadeIn();
                 }
