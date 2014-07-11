@@ -42,5 +42,6 @@ from previewadmin.admin import PreviewAdmin
 
 class CommessaAdmin(PreviewAdmin):
     show_help_text = True
+    button_label = u'<img src="/static/img/info.png" class="info-img" />'
 ```
 

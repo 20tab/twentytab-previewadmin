@@ -16,6 +16,7 @@ class PreviewAdmin(admin.ModelAdmin):
 
     preview_info_template = "previewadmin_change_form.html"
     show_help_text = False
+    button_label = _(u'View')
 
     def previewadmin_button(self, obj):
         return u'''
@@ -23,9 +24,9 @@ class PreviewAdmin(admin.ModelAdmin):
             <a href="preview-item/{}" class="preview-item">{}</a>
             <div class="preview-content"></div>
         </div>
-        '''.format(obj.pk, _(u'View'))
+        '''.format(obj.pk, self.button_label)
 
-    previewadmin_button.short_description = _('Preview')
+    previewadmin_button.short_description = ''
     previewadmin_button.allow_tags = True
 
     def __init__(self, model, admin_site):
