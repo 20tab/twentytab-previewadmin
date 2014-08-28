@@ -35,7 +35,8 @@ class PreviewAdmin(admin.ModelAdmin):
         self.list_display = (u'previewadmin_button',) + list_display
         if list_display:
             first_elem = list_display[0]
-            self.list_display_links = (first_elem,) + self.list_display_links
+            if not self.list_display_links:
+                self.list_display_links = (first_elem,) + self.list_display_links
 
     def get_readonly_fields_info(self, request, obj=None):
         if self.declared_fieldsets:

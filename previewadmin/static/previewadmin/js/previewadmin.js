@@ -7,6 +7,7 @@ django.jQuery(function($){
 
     $('.preview-item').on('click', function(){
         var url = window.location.pathname + $(this).attr('href');
+        var qs = window.location.search;
         var $this = $(this);
         var content = $this.siblings('.preview-content');
         if(content.is(':visible')){
@@ -14,7 +15,7 @@ django.jQuery(function($){
         }
         else if(content.is(':hidden')){
             $.ajax({
-                url: url,
+                url: url+qs,
                 success: function(data){
                     content.html(data);
                     $('.preview-content').fadeOut();
