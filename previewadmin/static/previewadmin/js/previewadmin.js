@@ -5,7 +5,11 @@ django.jQuery(function($){
         return false;
     }
 
+    $('body').append('<div id="preview-content-loader-over" class="">'+
+        '<img src="/static/previewadmin/img/loader.gif" alt="Loading"></div>');
+
     $('.preview-item').on('click', function(){
+        $('#preview-content-loader-over').addClass('display');
         var url = window.location.pathname + $(this).attr('href');
         var qs = window.location.search;
         var $this = $(this);
@@ -21,6 +25,7 @@ django.jQuery(function($){
                     $('.preview-content').fadeOut();
                     $('.close-preview').bind('click', close_preview);
                     content.fadeIn();
+                    $('#preview-content-loader-over').removeClass('full_opacity display');
                 }
             });
         }
